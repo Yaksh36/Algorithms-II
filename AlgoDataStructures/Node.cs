@@ -10,5 +10,10 @@
             Data = data;
             Next = next;
         }
+
+        public Node()
+        {
+            
+        }
     }
 }

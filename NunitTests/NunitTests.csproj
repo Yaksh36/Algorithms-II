@@ -4,11 +4,12 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{1564AC38-E3B1-49F9-A25B-6583C4C95677}</ProjectGuid>
-        <OutputType>Exe</OutputType>
+        <ProjectGuid>{B4E769FA-4332-4C00-B0B8-942E83DDC1B5}</ProjectGuid>
+        <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+        <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>AlgoDataStructures</RootNamespace>
-        <AssemblyName>AlgoDataStructures</AssemblyName>
+        <RootNamespace>NunitTests</RootNamespace>
+        <AssemblyName>NunitTests</AssemblyName>
         <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
@@ -32,28 +33,23 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\MSTest.TestFramework.2.2.4-preview-20210331-02\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
-          <Private>True</Private>
-        </Reference>
-        <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\MSTest.TestFramework.2.2.4-preview-20210331-02\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
-          <Private>True</Private>
-        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Xml" />
+        <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb">
+            <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="DoubleLinkedList.cs" />
-        <Compile Include="Node.cs" />
-        <Compile Include="Program.cs" />
+        <Compile Include="Tests.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="SingleLinkedList.cs" />
     </ItemGroup>
     <ItemGroup>
-      <None Include="packages.config" />
+      <ProjectReference Include="..\AlgoDataStructures\AlgoDataStructures.csproj">
+        <Project>{1564ac38-e3b1-49f9-a25b-6583c4c95677}</Project>
+        <Name>AlgoDataStructures</Name>
+      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
