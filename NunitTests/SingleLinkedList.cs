@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace NunitTests
 {
     [TestFixture]
-    public class Tests
+    public class SingleLikedListTest
     {
         
         [Test]
@@ -56,6 +56,19 @@ namespace NunitTests
             Assert.AreEqual(expected.Data, 'C');
         }
         
+        public void RemoveLastTest()
+        {
+            SingleLinkedList<char> linkedList = new SingleLinkedList<char>();
+            linkedList.Add('A');
+            linkedList.Add('B');
+            linkedList.Add('C');
+            linkedList.Add('D');
+            linkedList.RemoveLast();
+            var expected = linkedList.Get(2);
+            
+            Assert.AreEqual(expected.Data, 'C');
+        }
+        
         [Test]
         public void InsertTest()
         {
@@ -89,6 +102,18 @@ namespace NunitTests
             linkedList.Add('B');
             
             Assert.AreEqual(linkedList.Search('B'), 1);
+        }
+        
+        public void ClearTest()
+        {
+            SingleLinkedList<char> linkedList = new SingleLinkedList<char>();
+            linkedList.Add('A');
+            linkedList.Add('B');
+            linkedList.Add('C');
+            linkedList.Add('B');
+            linkedList.Clear();
+            
+            Assert.AreEqual(linkedList.Count, 0);
         }
         
     }

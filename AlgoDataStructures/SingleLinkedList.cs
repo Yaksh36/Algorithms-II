@@ -97,10 +97,18 @@ namespace AlgoDataStructures
 
         public T Remove()
         {
-            Head = Head.Next;
-            Count--;
-
-            return Head.Data;
+            if (Head == null)
+            {
+                return default(T);
+            }
+            else
+            {
+                var temp = Head;
+                Head = Head.Next;
+                Count--;
+                
+                return temp.Data;
+            }
         }
 
         public T RemoveAt(int index)
@@ -132,18 +140,23 @@ namespace AlgoDataStructures
 
                 Count--;
 
-                return currentNode.Next.Data;
+                return nodeToDelete.Data;
             }
         }
 
         public T RemoveLast()
         {
-        
-            Node<T> newTail = Get(Count - 2);
-            newTail.Next = null;
-            
-            Tail = newTail; 
-            return Tail.Data;
+            if (count - 2 >= 0)
+            {
+                Node<T> newTail = Get(Count - 2);
+
+                var tempTail = Tail;
+                Tail = newTail; 
+                return tempTail.Data;
+            }else
+            {
+                return default(T);
+            }
         }
 
         public override string ToString()

@@ -89,5 +89,29 @@ namespace NunitTests
             Assert.AreEqual(linkedList.Search('B'), 1);
         }
         
+        public void RemoveLastTest()
+        {
+            DoubleLinkedList<char> linkedList = new DoubleLinkedList<char>();
+            linkedList.Add('A');
+            linkedList.Add('B');
+            linkedList.Add('C');
+            linkedList.Add('D');
+            linkedList.RemoveLast();
+            var expected = linkedList.Get(2);
+            
+            Assert.AreEqual(expected.Data, 'C');
+        }
+        public void ClearTest()
+        {
+            DoubleLinkedList<char> linkedList = new DoubleLinkedList<char>();
+            linkedList.Add('A');
+            linkedList.Add('B');
+            linkedList.Add('C');
+            linkedList.Add('B');
+            linkedList.Clear();
+            
+            Assert.AreEqual(linkedList.Count, 0);
+        }
+        
     }
 }

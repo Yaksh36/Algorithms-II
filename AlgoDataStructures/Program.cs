@@ -6,15 +6,14 @@ namespace AlgoDataStructures
     {
         public static void Main(string[] args)
         {
-            DoubleLinkedList<char> charLinkedList = new DoubleLinkedList<char>();
+            SingleLinkedList<char> charLinkedList = new SingleLinkedList<char>();
             charLinkedList.Add('A');
             charLinkedList.Add('B');
             charLinkedList.Add('C');
             charLinkedList.Add('D');
-            charLinkedList.Insert('E',1);
-            
-            
-            Console.WriteLine( " ");
+            char a = charLinkedList.RemoveLast();
+
+            Console.WriteLine( a);
         }
     }
 }
