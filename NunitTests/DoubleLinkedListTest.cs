@@ -88,7 +88,7 @@ namespace NunitTests
             
             Assert.AreEqual(linkedList.Search('B'), 1);
         }
-        
+        [Test]
         public void RemoveLastTest()
         {
             DoubleLinkedList<char> linkedList = new DoubleLinkedList<char>();
@@ -101,6 +101,7 @@ namespace NunitTests
             
             Assert.AreEqual(expected.Data, 'C');
         }
+        [Test]
         public void ClearTest()
         {
             DoubleLinkedList<char> linkedList = new DoubleLinkedList<char>();

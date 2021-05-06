@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoDataStructures", "AlgoD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NunitTests", "NunitTests\NunitTests.csproj", "{B4E769FA-4332-4C00-B0B8-942E83DDC1B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryTreeDataStructures", "BinaryTreeDataStructures\BinaryTreeDataStructures.csproj", "{F5F72E40-B335-4685-BA66-FBBB61A8FE8C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{B4E769FA-4332-4C00-B0B8-942E83DDC1B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4E769FA-4332-4C00-B0B8-942E83DDC1B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4E769FA-4332-4C00-B0B8-942E83DDC1B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5F72E40-B335-4685-BA66-FBBB61A8FE8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5F72E40-B335-4685-BA66-FBBB61A8FE8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5F72E40-B335-4685-BA66-FBBB61A8FE8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5F72E40-B335-4685-BA66-FBBB61A8FE8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

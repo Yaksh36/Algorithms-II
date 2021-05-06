@@ -56,6 +56,7 @@ namespace NunitTests
             Assert.AreEqual(expected.Data, 'C');
         }
         
+        [Test]
         public void RemoveLastTest()
         {
             SingleLinkedList<char> linkedList = new SingleLinkedList<char>();
@@ -103,7 +104,7 @@ namespace NunitTests
             
             Assert.AreEqual(linkedList.Search('B'), 1);
         }
-        
+        [Test]
         public void ClearTest()
         {
             SingleLinkedList<char> linkedList = new SingleLinkedList<char>();
