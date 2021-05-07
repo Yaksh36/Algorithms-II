@@ -61,9 +61,9 @@ namespace NunitTests
         {
             BinarySearchTree<int> binarySearchTree = new BinarySearchTree<int>();
             binarySearchTree.Add(6);
+            binarySearchTree.Add(8);
             binarySearchTree.Add(4);
-            binarySearchTree.Add(2);
-            Assert.AreEqual(binarySearchTree.InOrder(), "2, 4, 6");
+            Assert.AreEqual(binarySearchTree.InOrder(), "4, 6, 8");
         }
         
         [Test]
@@ -71,9 +71,9 @@ namespace NunitTests
         {
             BinarySearchTree<int> binarySearchTree = new BinarySearchTree<int>();
             binarySearchTree.Add(6);
+            binarySearchTree.Add(8);
             binarySearchTree.Add(4);
-            binarySearchTree.Add(2);
-            Assert.AreEqual(binarySearchTree.PostOrder(), "2, 4, 6");
+            Assert.AreEqual(binarySearchTree.PostOrder(), "4, 8, 6");
         }
         
         [Test]
@@ -82,8 +82,8 @@ namespace NunitTests
             BinarySearchTree<int> binarySearchTree = new BinarySearchTree<int>();
             binarySearchTree.Add(6);
             binarySearchTree.Add(4);
-            binarySearchTree.Add(2);
-            Assert.AreEqual(binarySearchTree.PreOrder(), "6, 4, 2");
+            binarySearchTree.Add(8);
+            Assert.AreEqual(binarySearchTree.PreOrder(), "6, 4, 8");
         }
         
         [Test]
@@ -92,8 +92,16 @@ namespace NunitTests
             BinarySearchTree<int> binarySearchTree = new BinarySearchTree<int>();
             binarySearchTree.Add(6);
             binarySearchTree.Add(4);
-            binarySearchTree.Add(2);
-            Assert.AreEqual(binarySearchTree.Height(), 2);
+            binarySearchTree.Add(8);
+            Assert.AreEqual(binarySearchTree.Height(), 1);
+        }
+        
+        [Test]
+        public void EmptyTreeHeightTest()
+        {
+            BinarySearchTree<int> binarySearchTree = new BinarySearchTree<int>();
+            binarySearchTree.Add(6);
+            Assert.AreEqual(binarySearchTree.Height(), 0);
         }
         
         
