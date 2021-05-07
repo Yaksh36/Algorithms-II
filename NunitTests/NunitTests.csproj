@@ -42,14 +42,19 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="BinarySearchTreeTests.cs" />
         <Compile Include="DoubleLinkedListTest.cs" />
-        <Compile Include="SingleLinkedList.cs" />
+        <Compile Include="SingleLinkedListTest.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\AlgoDataStructures\AlgoDataStructures.csproj">
         <Project>{1564ac38-e3b1-49f9-a25b-6583c4c95677}</Project>
         <Name>AlgoDataStructures</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\BinaryTreeDataStructures\BinaryTreeDataStructures.csproj">
+        <Project>{f5f72e40-b335-4685-ba66-fbbb61a8fe8c}</Project>
+        <Name>BinaryTreeDataStructures</Name>
       </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

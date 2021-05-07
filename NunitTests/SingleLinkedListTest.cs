@@ -116,6 +116,22 @@ namespace NunitTests
             
             Assert.AreEqual(linkedList.Count, 0);
         }
+
+        [Test]
+        public void NegativeRangeTest()
+        {
+            SingleLinkedList<char> linkedList = new SingleLinkedList<char>();
+            linkedList.Add('A');
+            Assert.Throws<IndexOutOfRangeException>(() => linkedList.Get(-1));
+        }
+        
+        [Test]
+        public void OutOfRangeTest()
+        {
+            SingleLinkedList<char> linkedList = new SingleLinkedList<char>();
+            linkedList.Add('A');
+            Assert.Throws<IndexOutOfRangeException>(() => linkedList.Get(3));
+        }
         
     }
 }

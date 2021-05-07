@@ -15,9 +15,10 @@ namespace BinaryTreeDataStructures
             binarySearchTree.Add(7);
             binarySearchTree.Add(9);
             int a = binarySearchTree.Count;
-            binarySearchTree.Remove(4);
-            a = binarySearchTree.Count;
-            bool ans = binarySearchTree.Contains(9);
+            //bool ans = binarySearchTree.Contains(9);
+           //binarySearchTree.Clear();
+            string preOrder = binarySearchTree.PreOrder();
+            int height = binarySearchTree.Height();
             Console.WriteLine("Hello");
         }
     }

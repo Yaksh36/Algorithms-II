@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace BinaryTreeDataStructures
 {
@@ -29,6 +31,81 @@ namespace BinaryTreeDataStructures
             Root = RemoveRecursive(value, Root);
         }
 
+        public void Clear()
+        {
+            Root = null;
+            Count = 0;
+        }
+
+        public String InOrder()
+        {
+            var tempArr = new List<T>();
+            TraverseInOrder(Root,tempArr);
+            return String.Join(", " , tempArr);
+        }
+
+        private void TraverseInOrder(Node<T> currentNode, List<T> list)
+        {
+            if (currentNode != null)
+            {
+                TraverseInOrder(currentNode.Left,list);
+                list.Add(currentNode.Data);
+                TraverseInOrder(currentNode.Right,list);
+            }
+        }
+        
+        public String PostOrder()
+        {
+            var tempArr = new List<T>();
+            TraversePostOrder(Root,tempArr);
+            return String.Join(", " , tempArr);
+        }
+
+        private void TraversePostOrder(Node<T> currentNode, List<T> list)
+        {
+            if (currentNode != null)
+            {
+                TraversePostOrder(currentNode.Left,list);
+                TraversePostOrder(currentNode.Right,list);
+                list.Add(currentNode.Data);
+            }
+        }
+
+        public String PreOrder()
+        {
+            var tempArr = new List<T>();
+            TraversePreOrder(Root,tempArr);
+            return String.Join(", " , tempArr);
+        }
+
+        private void TraversePreOrder(Node<T> currentNode, List<T> list)
+        {
+            if (currentNode != null)
+            {
+                list.Add(currentNode.Data);
+                TraversePreOrder(currentNode.Left, list);
+                TraversePreOrder(currentNode.Right, list);
+            }
+        }
+
+        public int Height()
+        {
+            return HeightRecursive(Root);
+        }
+
+        private int HeightRecursive(Node<T> root)
+        {
+            if (root == null)
+            {
+                return -1;
+            }
+
+            int leftTreeHeight = HeightRecursive(root.Left);
+            int rightTreeHeight = HeightRecursive(root.Right);
+
+            return Math.Max(leftTreeHeight, rightTreeHeight) + 1;
+        }
+        
         private Node<T> RemoveRecursive(T value, Node<T> currentNode)
         {
             if (currentNode == null)
@@ -53,7 +130,6 @@ namespace BinaryTreeDataStructures
 
                 if (currentNode.Left != null && currentNode.Right != null)
                 {
-                    Count--;
                     T smallestValue = FindSmallestValue(currentNode.Right); 
                     currentNode.Data = smallestValue;
                     currentNode.Right = RemoveRecursive(smallestValue, currentNode.Right);

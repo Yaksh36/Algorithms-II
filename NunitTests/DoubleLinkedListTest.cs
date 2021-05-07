@@ -1,4 +1,5 @@
-﻿using AlgoDataStructures;
+﻿using System;
+using AlgoDataStructures;
 using NUnit.Framework;
 
 namespace NunitTests
@@ -114,5 +115,20 @@ namespace NunitTests
             Assert.AreEqual(linkedList.Count, 0);
         }
         
+        [Test]
+        public void NegativeRangeTest()
+        {
+            DoubleLinkedList<char> linkedList = new DoubleLinkedList<char>();
+            linkedList.Add('A');
+            Assert.Throws<IndexOutOfRangeException>(() => linkedList.Get(-1));
+        }
+        
+        [Test]
+        public void OutOfRangeTest()
+        {
+            DoubleLinkedList<char> linkedList = new DoubleLinkedList<char>();
+            linkedList.Add('A');
+            Assert.Throws<IndexOutOfRangeException>(() => linkedList.Get(3));
+        }
     }
 }
