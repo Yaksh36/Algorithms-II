@@ -22,106 +22,88 @@ namespace AVLTreeDataStruct
             if (value.CompareTo(currentNode.Data) < 0)
             {
                 currentNode.Left = Place(value, currentNode.Left);
+                currentNode = BalanceTree(currentNode);
             }
             else if (value.CompareTo(currentNode.Data) > 0)
             {
                 currentNode.Right = Place(value, currentNode.Right);
+                currentNode = BalanceTree(currentNode);
             }else
             {
                 return currentNode;
             }
-            
-            int balance = Balance(currentNode);
-            int height = HeightRecursive(currentNode);
-
-            //L
-            if (balance > 1 && value.CompareTo(currentNode.Left.Data) < 0)
-            {
-                return RightRotation(currentNode);
-            }
-
-            //R
-            if (balance < -1 && value.CompareTo(currentNode.Right.Data) > 0)
-            {
-                return LeftRotation(currentNode);
-            }
-            
-            //LR
-            if (balance > 1 && value.CompareTo(currentNode.Left.Data) > 0)
-            {
-                return LeftRotationRight(currentNode);
-            }
-            
-            //RL
-            if (balance < -1 && value.CompareTo(currentNode.Right.Data) < 0)
-            {
-                return RightRotationLeft(currentNode);
-            }
 
             return currentNode;
         }
-
-        private Node<T> RightRotation(Node<T> parent)
+        
+        private Node<T> BalanceTree(Node<T> current)
         {
-            //11
-            Node<T> pivot = parent.Left;
-            //null
-            Node<T> temp = parent.Right;
-            
-
-            pivot.Right = parent;
-            parent.Left = temp;
-            return pivot;
+            int balanceFactor = Balance(current);
+            //Heavy on the left side
+            if (balanceFactor > 1)
+            {
+                current = Balance(current.Left) > 0 ? RotateLL(current) : RotateLR(current);
+            }
+            //Heavy on the right side
+            else if (balanceFactor < -1)
+            {
+                current = Balance(current.Right) > 0 ? RotateRL(current) : RotateRR(current);
+            }
+            return current;
         }
         
-        private Node<T> LeftRotation(Node<T> parent)
+        private Node<T> RotateRR(Node<T> parent)
         {
-            //11
             Node<T> pivot = parent.Right;
-            //null
-            Node<T> temp = parent.Left;
-            
+            parent.Right = pivot.Left;
             pivot.Left = parent;
-            parent.Right = temp;
             return pivot;
         }
-        
-        private Node<T> LeftRotationRight(Node<T> parent)
+        private Node<T> RotateLL(Node<T> parent)
         {
             Node<T> pivot = parent.Left;
-            parent.Left = RightRotation(pivot);
-            return LeftRotation(parent);
+            parent.Left = pivot.Right;
+            pivot.Right = parent;
+            return pivot;
         }
-        
-        private Node<T> RightRotationLeft(Node<T> parent)
+        private Node<T> RotateLR(Node<T> parent)
+        {
+            Node<T> pivot = parent.Left;
+            parent.Left = RotateRR(pivot);
+            return RotateLL(parent);
+        }
+        private Node<T> RotateRL(Node<T> parent)
         {
             Node<T> pivot = parent.Right;
-            parent.Right = LeftRotation(pivot);
-            return RightRotation(parent);
+            parent.Right = RotateLL(pivot);
+            return RotateRR(parent);
         }
+
         
         private int Balance(Node<T> root)
         {
             int balanceFactor = HeightRecursive(root.Left) - HeightRecursive(root.Right);
-            //Console.WriteLine("Balance Factor:" + balanceFactor);
             return balanceFactor;
         }
 
         public T[] ToArray()
         {
             List<T> tempList = new List<T>();
-            TraverseLevelOrder(Root,tempList);
-            return tempList.ToArray();
-        }
-        
-        protected void TraverseLevelOrder(Node<T> currentNode, List<T> list)
-        {
-            if (currentNode != null)
+            Queue<Node<T>> queue = new Queue<Node<T>>();
+            queue.Enqueue(Root);
+            while (queue.Count != 0)
             {
-                list.Add(currentNode.Data);
-                TraverseInOrder(currentNode.Left,list);
-                TraverseInOrder(currentNode.Right,list);
+                var temp = queue.Dequeue();
+                tempList.Add(temp.Data);
+
+                if (temp.Left != null)
+                    queue.Enqueue(temp.Left);
+                
+                if (temp.Right != null)
+                    queue.Enqueue(temp.Right);
             }
+            
+            return tempList.ToArray();
         }
 
     }
