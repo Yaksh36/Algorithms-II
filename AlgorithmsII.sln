@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NunitTests", "NunitTests\Nu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryTreeDataStructures", "BinaryTreeDataStructures\BinaryTreeDataStructures.csproj", "{F5F72E40-B335-4685-BA66-FBBB61A8FE8C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground", "Playground\Playground.csproj", "{AFE5E213-10CA-49A7-BB2A-9FF83330971D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVLTreeDataStructures", "AVLTreeDataStructures\AVLTreeDataStructures.csproj", "{8A286BBE-678D-4D67-8CF3-8A7A31B5C2BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{F5F72E40-B335-4685-BA66-FBBB61A8FE8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5F72E40-B335-4685-BA66-FBBB61A8FE8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5F72E40-B335-4685-BA66-FBBB61A8FE8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFE5E213-10CA-49A7-BB2A-9FF83330971D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFE5E213-10CA-49A7-BB2A-9FF83330971D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFE5E213-10CA-49A7-BB2A-9FF83330971D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFE5E213-10CA-49A7-BB2A-9FF83330971D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A286BBE-678D-4D67-8CF3-8A7A31B5C2BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A286BBE-678D-4D67-8CF3-8A7A31B5C2BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A286BBE-678D-4D67-8CF3-8A7A31B5C2BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A286BBE-678D-4D67-8CF3-8A7A31B5C2BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -93,7 +93,7 @@ namespace NunitTests
             binarySearchTree.Add(6);
             binarySearchTree.Add(4);
             binarySearchTree.Add(8);
-            Assert.AreEqual(binarySearchTree.Height(), 1);
+            Assert.AreEqual(binarySearchTree.Height(), 2);
         }
         
         [Test]
@@ -101,8 +101,19 @@ namespace NunitTests
         {
             BinarySearchTree<int> binarySearchTree = new BinarySearchTree<int>();
             binarySearchTree.Add(6);
-            Assert.AreEqual(binarySearchTree.Height(), 0);
+            Assert.AreEqual(binarySearchTree.Height(), 1);
         }
+        
+        [Test]
+        public void ToArray()
+        {
+            BinarySearchTree<int> binarySearchTree = new BinarySearchTree<int>();
+            binarySearchTree.Add(6);
+            binarySearchTree.Add(8);
+            binarySearchTree.Add(4);
+            Assert.AreEqual(binarySearchTree.ToArray(), new int[]{4,6,8});
+        }
+
         
         
     }
