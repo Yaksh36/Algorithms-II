@@ -14,7 +14,7 @@ namespace MazeSolver
             String fileLocation = Console.ReadLine();
             Console.WriteLine("The location is: " +  fileLocation);
             
-            //Read all the lines
+            //Read file
             if (fileLocation != null)
             {
                var lines = File.ReadAllLines(fileLocation);
