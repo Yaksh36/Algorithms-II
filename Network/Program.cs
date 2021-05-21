@@ -16,8 +16,8 @@ namespace Network
             //Read file
             if (fileLocation != null)
             {
-                //var lines = File.ReadAllLines(fileLocation);
-                var lines = File.ReadAllLines("C:/Users/Yaksh Patel/Downloads/TestCase2.txt");
+                var lines = File.ReadAllLines(fileLocation);
+                //var lines = File.ReadAllLines("C:/Users/Yaksh Patel/Downloads/NetworkInputTestA.txt");
                 MinimumSpanningTree<String> graph = new MinimumSpanningTree<string>(); 
                 int index = 0;
                 foreach (var line in lines)
@@ -52,7 +52,7 @@ namespace Network
 
                 Console.WriteLine();
                 Console.WriteLine("Socket Set: {0}", String.Join(", ", graph.Vertices.Select(e => e.Key)));
-                Console.WriteLine("Cable Needed: {0}", graph.PrimsAlgorithm());
+                Console.WriteLine("Cable Needed: {0}ft", graph.PrimsAlgorithm());
             }
         }
     }

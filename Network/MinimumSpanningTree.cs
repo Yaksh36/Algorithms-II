@@ -78,7 +78,12 @@ namespace Network
                     if (vEdges.Count > 0 && !tempVertices.ContainsKey(vertex.Key))
                     {
                         var destVertex = vEdges.First();
-                        tempVertices.Add(destVertex.Item1.Data, destVertex.Item1);
+                        
+                        if (!tempVertices.ContainsKey(destVertex.Item1.Data))
+                        {
+                            tempVertices.Add(destVertex.Item1.Data, destVertex.Item1);
+                        }
+
                         edges.Add(new KeyValuePair<int, Tuple<Vertex<T>, Vertex<T>>>(destVertex.Item2, new Tuple<Vertex<T>, Vertex<T>>(vertex.Value,destVertex.Item1)));
                     }
                 }

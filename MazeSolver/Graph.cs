@@ -135,30 +135,5 @@ namespace MazeSolver
             }
             return false;
         }
-        
-        /*public void Breadth(Vertex<T> source)
-        {
-            Dictionary<T, bool> visited = new Dictionary<T, bool>();
-
-            Queue<Vertex<T>> queue = new Queue<Vertex<T>>();
-            visited[source.Data] = true;
-            queue.Enqueue(source);
-
-            while (queue.Count != 0)
-            {
-                source = queue.Dequeue();
-                Console.WriteLine(source.Data);
-
-                LinkedList<Vertex<T>> adjacents = source.Edges;
-                foreach (var vertex in adjacents)
-                {
-                    if (!visited.ContainsKey(vertex.Data))
-                    {
-                        visited[vertex.Data] = true;
-                        queue.Enqueue(vertex);
-                    }
-                }
-            }
-        }*/
     }
 }
