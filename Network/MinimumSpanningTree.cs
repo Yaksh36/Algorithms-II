@@ -63,20 +63,16 @@ namespace Network
                     tempVertices.Add(v2.Data);
                 }
 
-                foreach (var vertex in tempV)
-                {
-                    foreach (var e in vertex.Edges)
-                    {
-                        if (!tempVertices.Contains(e.Item1.Data))
-                        {
-                            trackEdges.Add(new KeyValuePair<int, Tuple<Vertex<T>, Vertex<T>>>(e.Item2, new Tuple<Vertex<T>, Vertex<T>>(vertex, e.Item1)));
-                        }
-                    }
-                }
+                trackEdges.AddRange(
+                    from vertex in tempV
+                    from e in vertex.Edges
+                    where !tempVertices.Contains(e.Item1.Data)
+                    select new KeyValuePair<int, Tuple<Vertex<T>, Vertex<T>>>(e.Item2, new Tuple<Vertex<T>, Vertex<T>>(vertex, e.Item1))
+                    );
 
                 trackEdges = trackEdges.Where(e => !tempVertices.Any(v => v.Equals(e.Value.Item2.Data))).ToList();
 
-                if (trackEdges.Count > 0)
+                if (trackEdges.Count <= 0) continue;
                 {
                     trackEdges = trackEdges.OrderBy(e=> e.Key).ToList();
                     queue.Enqueue(trackEdges.First());
