@@ -34,63 +34,58 @@ namespace Network
 
         public int PrimsAlgorithm()
         {
-            var tempVertices = new Dictionary<T, Vertex<T>>();
-            var edges = new List<KeyValuePair<int, Tuple<Vertex<T>, Vertex<T>>>>();
+            //Sort the edges
+            treeEdges =  treeEdges.OrderBy(e=> e.Key).ToList();
             
-            //sort the edges by weight
-            treeEdges = treeEdges.OrderBy(e=> e.Key).ToList();
-
-            //Take the first edge from the sorted list as prims Algorithm advices to start with the smallest edgex
-            Vertex<T> start = treeEdges.First().Value.Item1;
-            Vertex<T> startDest = treeEdges.First().Value.Item2;
+            var tempVertices = new HashSet<T>();
+            var trackEdges = new List<KeyValuePair<int, Tuple<Vertex<T>, Vertex<T>>>>();
+            var resultEdges = new List<KeyValuePair<int, Tuple<Vertex<T>, Vertex<T>>>>();
+            var queue = new Queue<KeyValuePair<int, Tuple<Vertex<T>, Vertex<T>>>>();
             
-            tempVertices.Add(start.Data,start);
-            edges.Add(treeEdges.First());
-            
-            Queue<Vertex<T>> queue = new Queue<Vertex<T>>();
-            queue.Enqueue(startDest);
+            //Pick the edge with least weight
+            queue.Enqueue(treeEdges.First());
 
             while (queue.Count != 0)
             {
-                Vertex<T> vertex = queue.Dequeue();
-                tempVertices.Add(vertex.Data,vertex);
-
-                var vertexEdges = vertex.Edges.Where(e => !tempVertices.Any(v => v.Key.Equals(e.Item1.Data))).ToList();
-                vertexEdges = vertexEdges.OrderBy(e => e.Item2).ToList();
-                if (vertexEdges.Count > 0)
+                var edge = queue.Dequeue();
+                resultEdges.Add(edge);
+                
+                var v1 = edge.Value.Item1;
+                var v2 = edge.Value.Item2;
+                var tempV = new Vertex<T>[] {v1,v2 };
+                
+                if (!tempVertices.Contains(v1.Data))
                 {
-                    var destVertex = vertexEdges.First();
-
-                    edges.Add(new KeyValuePair<int, Tuple<Vertex<T>, Vertex<T>>>(destVertex.Item2,
-                        new Tuple<Vertex<T>, Vertex<T>>(vertex, destVertex.Item1)));
-
-                    queue.Enqueue(destVertex.Item1);
+                    tempVertices.Add(v1.Data);
                 }
-            }
-
-            //Special case if all the vertices are not included
-            var remainder = Vertices.Where(e => !tempVertices.Any(v => v.Key.Equals(e.Key))).ToList();
-            if (remainder.Count > 0)
-            {
-                foreach (var vertex in remainder)
+                if (!tempVertices.Contains(v2.Data))
                 {
-                    var vEdges = vertex.Value.Edges.OrderBy(e => e.Item2).ToList();
-                    if (vEdges.Count > 0 && !tempVertices.ContainsKey(vertex.Key))
-                    {
-                        var destVertex = vEdges.First();
-                        
-                        if (!tempVertices.ContainsKey(destVertex.Item1.Data))
-                        {
-                            tempVertices.Add(destVertex.Item1.Data, destVertex.Item1);
-                        }
+                    tempVertices.Add(v2.Data);
+                }
 
-                        edges.Add(new KeyValuePair<int, Tuple<Vertex<T>, Vertex<T>>>(destVertex.Item2, new Tuple<Vertex<T>, Vertex<T>>(vertex.Value,destVertex.Item1)));
+                foreach (var vertex in tempV)
+                {
+                    foreach (var e in vertex.Edges)
+                    {
+                        if (!tempVertices.Contains(e.Item1.Data))
+                        {
+                            trackEdges.Add(new KeyValuePair<int, Tuple<Vertex<T>, Vertex<T>>>(e.Item2, new Tuple<Vertex<T>, Vertex<T>>(vertex, e.Item1)));
+                        }
                     }
                 }
-            }
 
-            PrintTree(edges);
-            return edges.Count > 0 ? edges.Sum(e => e.Key) : -1;
+                trackEdges = trackEdges.Where(e => !tempVertices.Any(v => v.Equals(e.Value.Item2.Data))).ToList();
+
+                if (trackEdges.Count > 0)
+                {
+                    trackEdges = trackEdges.OrderBy(e=> e.Key).ToList();
+                    queue.Enqueue(trackEdges.First());
+                    trackEdges.RemoveAt(0);
+                }
+            }
+            
+            PrintTree(resultEdges);
+            return resultEdges.Count > 0 ? resultEdges.Sum(e => e.Key) : -1;
         }
 
         public void PrintTree(List<KeyValuePair<int, Tuple<Vertex<T>, Vertex<T>>>> edges)
