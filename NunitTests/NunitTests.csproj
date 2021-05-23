@@ -63,6 +63,13 @@
         <Name>BinaryTreeDataStructures</Name>
       </ProjectReference>
     </ItemGroup>
+    <ItemGroup>
+      <Content Include="NetworkInputTestA.txt" />
+      <Content Include="NetworkInputTestB.txt" />
+      <Content Include="TestCase.txt" />
+      <Content Include="TestCase2.txt" />
+      <Content Include="TestMazes.txt" />
+    </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.

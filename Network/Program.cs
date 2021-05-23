@@ -53,6 +53,7 @@ namespace Network
                 Console.WriteLine();
                 Console.WriteLine("Socket Set: {0}", String.Join(", ", graph.Vertices.Select(e => e.Key)));
                 Console.WriteLine("Cable Needed: {0}ft", graph.PrimsAlgorithm());
+                Console.WriteLine("To checkout the diagram of the network, please go to the bin folder of the project's directory. ");
             }
         }
     }
